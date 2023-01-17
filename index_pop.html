@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;” />
+    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=false;” />
+    <meta name=”viewport” content=”width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;” />
     
-    <title>Esp CAr
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Esp Car
     </title>
     <style>
         *{
@@ -13,22 +16,31 @@
             margin: 0;
         }
         body{
-            background-color: #ced4da;
+            background-color: #ffffff;
         }
         .container{
             display: grid;
+            background-color: #dee2e6;
             grid-template-columns: 1fr 4fr 4fr 1fr;
-            grid-template-rows: 1fr 4fr 2fr;
+            grid-template-rows: 10vh 85vh 5vh;
             grid-template-areas: 
             "title title title title"
             ". main main . "
             " footer footer footer footer";
         }
         .title{
+            display: grid;
+            background-color: #adb5bd;
             grid-area: title;
             text-align: center;
+            
+        }
+        .t{
+            place-self: center;
+            color: #252422;
         }
         .main{
+            display: grid;
             grid-area: main;
             align-items: center;
             place-self: center;
@@ -36,44 +48,96 @@
         }
         .wrapperSter{
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 2fr 1fr;
             grid-template-rows: 1fr 1fr;
             grid-template-areas: 
             ". arrowUp ."
-            "arrowLeft . arrowRight";
+            "arrowLeft arrowDown arrowRight";
+            column-gap: 5px;
+            row-gap: 5px;
         }
         .footer{
             grid-area: footer;
-            background-color: #adb5bd;
-            color: #495057;
+            background-color: #ced4da;
+            color: #252422;
             font-size: xx-small;
             
         }
         .arrowUp{
             grid-area: arrowUp;
-            align-self: center;
+            justify-self: center;
+
+        }
+        .arrowDown{
+            grid-area: arrowDown;
+            justify-self: center;
+
         }
         .arrowLeft{
             grid-area: arrowLeft;
-            align-self: center;
+            justify-self: center;
         }
         .arrowRight{
             grid-area: arrowRight;
-            align-self: center;
+            justify-self: center;
         }
+        .box-btn{
+            display: grid;
+            background-color: #003049;
+            color: #d62828;
+            width: 90px;
+            height: 90px;
+            border-radius: 10px;
+        }
+        .btn{
+            place-self: center;
+            text-align: center;
+        }
+        .noselect {
+      -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+         -khtml-user-select: none; /* Konqueror HTML */
+           -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome and Opera */
+    }
     </style>
-    <script src="https://kit.fontawesome.com/1efcd53376.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="noselect">
     <div class="container">
-        <div class="title">Lorem, ipsum dolor.</div>
+        <div class="title">
+            <div class="t">
+                🚨🔥🏎🚀🔥🚨
+            </div>
+        </div>
         <div class="main">
             <div class="wrapperSter">
-                    <div class="arrowUp">UP
-                        <i class="fa-regular fa-arrow-up"></i>
+                <div class="arrowUp">
+                    <div class="box-btn" ontouchstart='onTouchStartAndEnd("1")' ontouchend='onTouchStartAndEnd("0")'>
+                        <div class="btn">
+                            <span class="arrows" >&#8679;</span>
+                        </div>
                     </div>
-                    <div class="arrowLeft">Left</div>
-                    <div class="arrowRight">Right</div>
+                </div>
+                <div class="arrowLeft">
+                    <div class="box-btn" ontouchstart='onTouchStartAndEnd("3")' ontouchend='onTouchStartAndEnd("0")'>
+                    <div class="btn">
+                        &#8678;
+                    </div>
+                </div></div>
+                <div class="arrowDown">
+                    <div class="box-btn" ontouchstart='onTouchStartAndEnd("2")' ontouchend='onTouchStartAndEnd("0")'>
+                    <div class="btn">
+                        &#8681;
+                    </div>
+                </div></div>
+                <div class="arrowRight">
+                    <div class="box-btn" ontouchstart='onTouchStartAndEnd("4")' ontouchend='onTouchStartAndEnd("0")'>
+                    <div class="btn">
+                        &#8680;
+                    </div>
+                </div></div>
             </div>
         </div>
         <div class="footer">Lorem ipsum dolor sit amet.</div>
