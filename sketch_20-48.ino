@@ -12,12 +12,7 @@
 #define DOWN 2
 #define LEFT 3
 #define RIGHT 4
-#define UP_LEFT 5
-#define UP_RIGHT 6
-#define DOWN_LEFT 7
-#define DOWN_RIGHT 8
-#define TURN_LEFT 9
-#define TURN_RIGHT 10
+
 #define STOP 0
 
 #define FRONT_RIGHT_MOTOR 0
@@ -34,13 +29,6 @@ struct MOTOR_PINS
   int pinIN2;    
 };
 
-std::vector<MOTOR_PINS> motorPins = 
-{
-  {16, 17},  //FRONT_RIGHT_MOTOR
-  {18, 19},  //BACK_RIGHT_MOTOR
-  {27, 26},  //FRONT_LEFT_MOTOR
-  {25, 33},  //BACK_LEFT_MOTOR   
-};
 
 const char* ssid     = "MyWiFiCar";
 const char* password = "12345678";
@@ -219,23 +207,8 @@ const char* htmlHomePage PROGMEM = R"HTMLHOMEPAGE(
 
 void rotateMotor(int motorNumber, int motorDirection)
 {
-  if (motorDirection == FORWARD)
-  {
-    digitalWrite(motorPins[motorNumber].pinIN1, HIGH);
-    digitalWrite(motorPins[motorNumber].pinIN2, LOW);    
-  }
-  else if (motorDirection == BACKWARD)
-  {
-    digitalWrite(motorPins[motorNumber].pinIN1, LOW);
-    digitalWrite(motorPins[motorNumber].pinIN2, HIGH);     
-  }
-  else
-  {
-    digitalWrite(motorPins[motorNumber].pinIN1, LOW);
-    digitalWrite(motorPins[motorNumber].pinIN2, LOW);       
-  }
+  
 }
-
 void processCarMovement(String inputValue)
 {
   Serial.printf("Got value as %s %d\n", inputValue.c_str(), inputValue.toInt());  
@@ -333,20 +306,12 @@ void onWebSocketEvent(AsyncWebSocket *server,
   }
 }
 
-void setUpPinModes()
-{
-  for (int i = 0; i < motorPins.size(); i++)
-  {
-    pinMode(motorPins[i].pinIN1, OUTPUT);
-    pinMode(motorPins[i].pinIN2, OUTPUT);  
-    rotateMotor(i, STOP);  
-  }
-}
+
 
 
 void setup(void) 
 {
-  setUpPinModes();
+  
   Serial.begin(115200);
 
   WiFi.softAP(ssid, password);
