@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Esp CAr
+    </title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #ced4da;
+        }
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 4fr 4fr 1fr;
+            grid-template-rows: 1fr 4fr 2fr;
+            grid-template-areas: 
+            "title title title title"
+            ". main main . "
+            " footer footer footer footer";
+        }
+        .title{
+            grid-area: title;
+            text-align: center;
+        }
+        .main{
+            grid-area: main;
+            align-items: center;
+            place-self: center;
+            
+        }
+        .wrapperSter{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas: 
+            ". arrowUp ."
+            "arrowLeft . arrowRight";
+        }
+        .footer{
+            grid-area: footer;
+            background-color: #adb5bd;
+            color: #495057;
+            font-size: xx-small;
+            
+        }
+        .arrowUp{
+            grid-area: arrowUp;
+            align-self: center;
+        }
+        .arrowLeft{
+            grid-area: arrowLeft;
+            align-self: center;
+        }
+        .arrowRight{
+            grid-area: arrowRight;
+            align-self: center;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/1efcd53376.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Lorem, ipsum dolor.</div>
+        <div class="main">
+            <div class="wrapperSter">
+                    <div class="arrowUp">UP
+                        <i class="fa-regular fa-arrow-up"></i>
+                    </div>
+                    <div class="arrowLeft">Left</div>
+                    <div class="arrowRight">Right</div>
+            </div>
+        </div>
+        <div class="footer">Lorem ipsum dolor sit amet.</div>
+    </div>
+    
+</body>
+</html>
