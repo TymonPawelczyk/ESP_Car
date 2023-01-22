@@ -48,13 +48,25 @@
         }
         .wrapperSter{
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr ;
             grid-template-areas: 
+            "sliderUpDown . . . "
+            "sliderUpDown . . ."
+            "sliderUpDown sliderLeftRight sliderLeftRight sliderLeftRight"
+            ;
+            /* grid-template-areas: 
             ". arrowUp ."
-            "arrowLeft arrowDown arrowRight";
-            column-gap: 5px;
+            "arrowLeft arrowDown arrowRight"; */
+            /* column-gap: 5px; */
             row-gap: 5px;
+        }
+        .sliderUpDown{
+            grid-area: sliderUpDown;
+        }
+        .sliderLeftRight{
+            grid-area: sliderLeftRight;
+            align-self: center;
         }
         .footer{
             grid-area: footer;
@@ -63,36 +75,14 @@
             font-size: xx-small;
             
         }
-        .arrowUp{
-            grid-area: arrowUp;
-            justify-self: center;
-
-        }
-        .arrowDown{
-            grid-area: arrowDown;
-            justify-self: center;
-
-        }
-        .arrowLeft{
-            grid-area: arrowLeft;
-            justify-self: center;
-        }
-        .arrowRight{
-            grid-area: arrowRight;
-            justify-self: center;
-        }
-        .box-btn{
+        /* .box-btn{
             display: grid;
             background-color: #003049;
             color: #d62828;
             width: 90px;
             height: 90px;
             border-radius: 10px;
-        }
-        .btn{
-            place-self: center;
-            text-align: center;
-        }
+        } */
         .noselect {
       -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
@@ -101,6 +91,16 @@
             -ms-user-select: none; /* Internet Explorer/Edge */
                 user-select: none; /* Non-prefixed version, currently
                                       supported by Chrome and Opera */
+    }
+    #sliderVer{
+        writing-mode: bt-lr; /* IE */
+        -webkit-appearance: slider-vertical; /* Chromium */
+        width: 100%;
+        height: 175px;
+        padding: 0 5px;
+    }
+    #sliderHor{
+        width: 100%;
     }
     </style>
 </head>
@@ -113,35 +113,27 @@
         </div>
         <div class="main">
             <div class="wrapperSter">
-                <div class="arrowUp">
-                    <div class="box-btn" ontouchstart='onTouchStartAndEnd("1")' ontouchend='onTouchStartAndEnd("0")'>
-                        <div class="btn">
-                            <span class="arrows" >&#8679;</span>
-                        </div>
-                    </div>
+                <div class="sliderUpDown">
+                    <input type="range" min="0" max="100" value="50" id="sliderVer" oriennt="vertical" id="myRange">
                 </div>
-                <div class="arrowLeft">
-                    <div class="box-btn" ontouchstart='onTouchStartAndEnd("3")' ontouchend='onTouchStartAndEnd("0")'>
-                    <div class="btn">
-                        &#8678;
-                    </div>
-                </div></div>
-                <div class="arrowDown">
-                    <div class="box-btn" ontouchstart='onTouchStartAndEnd("2")' ontouchend='onTouchStartAndEnd("0")'>
-                    <div class="btn">
-                        &#8681;
-                    </div>
-                </div></div>
-                <div class="arrowRight">
-                    <div class="box-btn" ontouchstart='onTouchStartAndEnd("4")' ontouchend='onTouchStartAndEnd("0")'>
-                    <div class="btn">
-                        &#8680;
-                    </div>
-                </div></div>
+                <div class="sliderLeftRight">
+                    <input type="range" min="0" max="100" value="50" id="sliderHor"  id="myRange">
+                </div>
+
             </div>
         </div>
         <div class="footer">Lorem ipsum dolor sit amet.</div>
     </div>
     
 </body>
+
+<script>
+var slider = document.getElementById("slider");
+slider.onmouseup = function() {
+  var middle = (this.min + this.max) / 2;
+  this.value = middle;
+};
+
+</script>
+
 </html>
